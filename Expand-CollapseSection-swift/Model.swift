@@ -11,7 +11,7 @@ import UIKit
 class Model: NSObject {
 
     var headerName : String?
-    var isExpandable : Bool?
+    var isExpandable : Bool
     var subType : [String] = [String]()
     
     
