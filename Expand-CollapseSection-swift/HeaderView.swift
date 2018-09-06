@@ -8,23 +8,31 @@
 
 import UIKit
 
+protocol HeaderViewDelegate {
+    func callHeader(iNumber: Int)
+    
+}
+
 class HeaderView: UIView {
 
+    var iSectionIndex : Int?
+    var delegate : HeaderViewDelegate?
     
     // lazy property : do not store the property in memory just call and execute
     lazy var btnSection: UIButton = {
       
         let btnSection = UIButton(frame: CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: self.frame.width, height: self.frame.height))
         btnSection.backgroundColor = UIColor.red
-        
-        btnSection.titleLabel?.text = "Title Section"
         btnSection.addTarget(self, action: #selector(onClickTrigger), for: .touchUpInside)
         return btnSection
     }()
     
     
     @objc func onClickTrigger() {
-        print("Tapped in the title section")
+        if let index = iSectionIndex{
+            delegate?.callHeader(iNumber: index)
+        }
+
     }
     
     
